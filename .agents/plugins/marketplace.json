@@ -5,7 +5,7 @@
   },
   "plugins": [
     {
-      "name": "grill-me",
+      "name": "grill-xx",
       "source": {
         "source": "local",
         "path": "./plugins/grill-xx"
