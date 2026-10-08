@@ -118,8 +118,8 @@
       "repository": "https://github.com/wangx-wx/cc-plugins.git"
     },
     {
-      "name": "grill-me",
-      "source": "./plugins/grill-me",
+      "name": "grill-xx",
+      "source": "./plugins/grill-xx",
       "strict": true,
       "description": "知识库检索插件",
       "version": "1.0.0",

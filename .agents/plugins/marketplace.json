@@ -8,7 +8,7 @@
       "name": "grill-me",
       "source": {
         "source": "local",
-        "path": "./plugins/grill-me"
+        "path": "./plugins/grill-xx"
       },
       "policy": {
         "installation": "AVAILABLE",
