@@ -1,7 +1,7 @@
 {
-  "name": "wx-cc-plugins",
+  "name": "cc-plugins",
   "interface": {
-    "displayName": "WX CC Plugins"
+    "displayName": "CC Plugins"
   },
   "plugins": [
     {
