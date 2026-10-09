@@ -1,2 +1,2 @@
-# cc-plugins
+# agent-plugins
 claude code test plugin

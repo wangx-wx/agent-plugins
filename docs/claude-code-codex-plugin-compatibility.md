@@ -413,7 +413,7 @@ Superpowers 的 Codex 发布脚本会：
 ## 10. 推荐目录结构
 
 ```text
-wx-cc-plugins/
+agent-plugins/
 ├── .claude-plugin/
 │   └── marketplace.json
 ├── .agents/
