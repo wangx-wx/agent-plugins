@@ -1,6 +1,7 @@
 ---
 name: project-forge-kb-guide
 description: ProjectForgeKB（project-forge-kb）使用指南：讲清楚它最终产出什么、哪些环节必须人工介入、怎么填 docs/kb/module-scope.yaml、语雀候选和 L1/归档文档的状态怎么改、以及为什么 L0 的 description 和内容必须人工审核。只要用户在问 project-forge-kb 的用法、想知道建库结果长什么样、module-scope.yaml 字段怎么填、怎么找 Java 包名和文档路径、yuque_sources 怎么写、报错怎么修、候选 decision 或 L1 status 怎么改、L0 要审核什么，都应使用本 Skill 提供完整指南。用户明确要求实际执行建库或增量更新时，改用 project-forge-kb 执行。
+disable-model-invocation: true
 ---
 
 # ProjectForgeKB 使用指南

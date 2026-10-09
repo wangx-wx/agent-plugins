@@ -1,6 +1,7 @@
 ---
 name: linuxdo-trust-level
 description: 帮用户在 linux.do（L 站）累积"浏览帖子"指标推进 Trust Level（信任等级）升级。流程：访问 connect.linux.do 查看当前等级与差距 → 自动滚动浏览中等规模话题积累已读量 → 操作前后对比增量。当用户提到 linux.do、L 站、L 站升级、刷阅读、信任等级、Trust Level、Lv2/Lv3、connect.linux.do 时主动触发，即使用户没明确说"用 skill"。不代写任何要发布的内容、不代点赞。
+disable-model-invocation: true
 ---
 
 # linux.do 信任等级提升

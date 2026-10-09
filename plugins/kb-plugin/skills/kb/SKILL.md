@@ -1,6 +1,7 @@
 ---
 name: kb
 description: Retrieve code knowledge across the lyy multi-project knowledge base via the `kb search` CLI (wraps graphify, emits NDJSON). Use when working in this repo (lyy-project-knowledge) or the lyy GitLab workspace and the user asks about a project's location, architecture, call paths, or blast radius — e.g. "order-query 在哪个项目", "starmind 入口怎么走", "改了 OrderService 影响谁", "BizChat 到 DashScope 的调用链", "find the project for X", "how does Y work", "what calls Z", "trace the path from A to B". Flow is always: `kb search project <keyword>` to locate the project, then `query`/`explain` to discover exact node labels, then `path`/`affected` with those labels. Prefer this over `cd <repo> && graphify query` when the project is tracked here. Triggers: "kb search", "查知识库", "项目在哪", "调用链", "影响面", "入口在哪". Do NOT use for one-off git operations or building/maintaining the knowledge base.
+disable-model-invocation: true
 ---
 
 # kb —— lyy 知识库统一检索入口

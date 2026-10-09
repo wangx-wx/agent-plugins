@@ -1,6 +1,7 @@
 ---
 name: adp-search-knowledge
 description: "This skill should be used when the user wants to search or retrieve knowledge from a Tencent Cloud ADP (formerly LKE) knowledge base via the SearchKnowledgeRelease API. It covers the full workflow: obtaining API credentials, resolving the target application (must be in 'running' status), checking document EnableScope before first search, calling SearchKnowledgeRelease to retrieve knowledge, and guiding users when no results are found. Important: this API only supports searching apps (AppBizId), not shared knowledge bases (KnowledgeBizId) directly, and the app must be in 'running' status. Triggers include mentions of SearchKnowledgeRelease, ADP knowledge search, LKE knowledge retrieval, knowledge base search, semantic search, document search, or requests to search/query/retrieve knowledge from a Tencent Cloud agent knowledge base."
+disable-model-invocation: true
 ---
 
 # Tencent Cloud ADP（智能体开发平台）- SearchKnowledgeRelease 知识检索

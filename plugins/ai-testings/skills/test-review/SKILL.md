@@ -2,6 +2,7 @@
 name: test-review
 description: 审查当前代码变更(git diff)，判定每处变更「是否需要测试 / 哪种测试 / 能否复用现有测试 / 旧测试是否需更新」，输出审查清单。当用户要做提交前测试检查、审查测试覆盖、或提到「测试审查 / test-review」时使用。
 allowed-tools: AskUserQuestion
+disable-model-invocation: true
 ---
 
 # test-review：变更测试需求审查
