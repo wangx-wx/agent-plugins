@@ -1,9 +1,9 @@
 {
-  "name": "cc-plugins",
+  "name": "agent-plugins",
   "owner": {
     "name": "wangx",
     "email": "",
-    "url": "https://github.com/wangx-wx/cc-plugins.git"
+    "url": "https://github.com/wangx-wx/agent-plugins.git"
   },
   "metadata": {
     "description": "测试claude工具",
@@ -18,8 +18,8 @@
       "version": "1.0.0",
       "keywords": ["map", "weather"],
       "license": "MIT",
-      "homepage": "https://github.com/wangx-wx/cc-plugins",
-      "repository": "https://github.com/wangx-wx/cc-plugins.git"
+      "homepage": "https://github.com/wangx-wx/agent-plugins",
+      "repository": "https://github.com/wangx-wx/agent-plugins.git"
     },
     {
       "name": "lyy-dev-plugin",
@@ -29,8 +29,8 @@
       "version": "1.0.0",
       "keywords": ["dev", "常用插件"],
       "license": "MIT",
-      "homepage": "https://github.com/wangx-wx/cc-plugins",
-      "repository": "https://github.com/wangx-wx/cc-plugins.git"
+      "homepage": "https://github.com/wangx-wx/agent-plugins",
+      "repository": "https://github.com/wangx-wx/agent-plugins.git"
     },
     {
       "name": "code-review",
@@ -40,8 +40,8 @@
       "version": "1.0.0",
       "keywords": ["dev", "code-review"],
       "license": "MIT",
-      "homepage": "https://github.com/wangx-wx/cc-plugins",
-      "repository": "https://github.com/wangx-wx/cc-plugins.git"
+      "homepage": "https://github.com/wangx-wx/agent-plugins",
+      "repository": "https://github.com/wangx-wx/agent-plugins.git"
     },
     {
       "name": "office-plugin",
@@ -51,8 +51,8 @@
       "version": "1.0.0",
       "keywords": ["office", "pdf", "xlsx", "docx", "pptx"],
       "license": "MIT",
-      "homepage": "https://github.com/wangx-wx/cc-plugins",
-      "repository": "https://github.com/wangx-wx/cc-plugins.git"
+      "homepage": "https://github.com/wangx-wx/agent-plugins",
+      "repository": "https://github.com/wangx-wx/agent-plugins.git"
     },
     {
       "name": "perfect-plugin",
@@ -62,8 +62,8 @@
       "version": "1.0.0",
       "keywords": ["office", "pdf", "xlsx", "docx", "pptx"],
       "license": "MIT",
-      "homepage": "https://github.com/wangx-wx/cc-plugins",
-      "repository": "https://github.com/wangx-wx/cc-plugins.git"
+      "homepage": "https://github.com/wangx-wx/agent-plugins",
+      "repository": "https://github.com/wangx-wx/agent-plugins.git"
     },
     {
       "name": "adp-plugin",
@@ -73,8 +73,8 @@
       "version": "1.0.0",
       "keywords": ["adp", "knowledge-search"],
       "license": "MIT",
-      "homepage": "https://github.com/wangx-wx/cc-plugins",
-      "repository": "https://github.com/wangx-wx/cc-plugins.git"
+      "homepage": "https://github.com/wangx-wx/agent-plugins",
+      "repository": "https://github.com/wangx-wx/agent-plugins.git"
     },
     {
       "name": "project-analyzer",
@@ -84,8 +84,8 @@
       "version": "1.0.0",
       "keywords": ["project-rules", "ai-coding", "java", "spring-cloud", "architecture", "feign", "code-analysis", "robustness"],
       "license": "MIT",
-      "homepage": "https://github.com/wangx-wx/cc-plugins",
-      "repository": "https://github.com/wangx-wx/cc-plugins.git"
+      "homepage": "https://github.com/wangx-wx/agent-plugins",
+      "repository": "https://github.com/wangx-wx/agent-plugins.git"
     },
     {
       "name": "ai-testings",
@@ -94,8 +94,8 @@
       "description": "AI 测试相关插件集合",
       "version": "1.0.0",
       "license": "MIT",
-      "homepage": "https://github.com/wangx-wx/cc-plugins",
-      "repository": "https://github.com/wangx-wx/cc-plugins.git"
+      "homepage": "https://github.com/wangx-wx/agent-plugins",
+      "repository": "https://github.com/wangx-wx/agent-plugins.git"
     },
     {
       "name": "kb",
@@ -104,8 +104,8 @@
       "description": "知识库检索插件",
       "version": "1.0.0",
       "license": "MIT",
-      "homepage": "https://github.com/wangx-wx/cc-plugins",
-      "repository": "https://github.com/wangx-wx/cc-plugins.git"
+      "homepage": "https://github.com/wangx-wx/agent-plugins",
+      "repository": "https://github.com/wangx-wx/agent-plugins.git"
     },
     {
       "name": "project-forge-kb",
@@ -114,8 +114,8 @@
       "description": "项目知识库",
       "version": "2.0.0",
       "license": "MIT",
-      "homepage": "https://github.com/wangx-wx/cc-plugins",
-      "repository": "https://github.com/wangx-wx/cc-plugins.git"
+      "homepage": "https://github.com/wangx-wx/agent-plugins",
+      "repository": "https://github.com/wangx-wx/agent-plugins.git"
     },
     {
       "name": "grill-xx",
@@ -124,8 +124,8 @@
       "description": "知识库检索插件",
       "version": "1.0.0",
       "license": "MIT",
-      "homepage": "https://github.com/wangx-wx/cc-plugins",
-      "repository": "https://github.com/wangx-wx/cc-plugins.git"
+      "homepage": "https://github.com/wangx-wx/agent-plugins",
+      "repository": "https://github.com/wangx-wx/agent-plugins.git"
     }
   ]
 }

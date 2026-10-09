@@ -1,7 +1,7 @@
 {
-  "name": "cc-plugins",
+  "name": "agent-plugins",
   "interface": {
-    "displayName": "CC Plugins"
+    "displayName": "Agent Plugins"
   },
   "plugins": [
     {
