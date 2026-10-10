@@ -126,6 +126,16 @@
       "license": "MIT",
       "homepage": "https://github.com/wangx-wx/agent-plugins",
       "repository": "https://github.com/wangx-wx/agent-plugins.git"
+    },
+    {
+      "name": "ali-code-review",
+      "source": "./plugins/ali-code-review",
+      "strict": true,
+      "description": "代码审查插件",
+      "version": "1.0.0",
+      "license": "MIT",
+      "homepage": "https://github.com/wangx-wx/agent-plugins",
+      "repository": "https://github.com/wangx-wx/agent-plugins.git"
     }
   ]
 }

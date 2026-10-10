@@ -1,0 +1,19 @@
+{
+    "name": "ali-code-review",
+    "description": "代码审查插件，提供代码审查功能，支持P3C、代码规范检查等",
+    "version": "1.0.0",
+    "author": {
+        "name": "wangx"
+    },
+    "repository": "https://github.com/wangx-wx/agent-plugins",
+    "license": "MIT",
+    "keywords": [
+        "dev",
+        "code-review"
+    ],
+    "agents": [
+    ],
+    "skills": [
+        "./skills/open-code-review-delegate"
+    ]
+}
