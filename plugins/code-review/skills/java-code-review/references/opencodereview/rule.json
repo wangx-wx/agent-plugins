@@ -1,0 +1,15 @@
+{
+  "exclude": ["**/pom.xml", "**/src/test/**/*.java", "**/*.json"],
+  "rules": [
+    {
+      "path": "**/*.java",
+      "rule": "java-rules.md",
+      "merge_system_rule": false
+    },
+    {
+      "path": "**/{*Mapper.xml,mapper/**/*.xml}",
+      "rule": "sql-xml-rules.md",
+      "merge_system_rule": false
+    }
+  ]
+}
