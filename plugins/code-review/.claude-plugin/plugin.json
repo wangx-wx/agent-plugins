@@ -20,7 +20,8 @@
     ],
     "mcpServers": "./mcp.json",
     "skills": [
-        "./skills/java-code-review"
+        "./skills/java-code-review",
+        "./skills/ci-code-review"
     ],
     "commands":[
         "./commands/readme.md"
