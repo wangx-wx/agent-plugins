@@ -7,7 +7,9 @@
 # 数据来源：
 #   - AI 审查：{findings:[{fileName,location,ruleId,blockLevel,codeSnippet,affectedScope,suggestion}]}
 #   - P3C 检查：$repo_dir/.code-review/p3c-report.json（扁平数组，字段见下）
-# 两者按 blockLevel 合并到同一份报告，条目以 [AI] / [P3C] 标记来源。
+#   - SQL 检查：$repo_dir/.code-review/sql/sql-check-response.json（接口原始响应）
+# AI 与 P3C 合并为 code-review；SQL 检查结果原样放入 sql-review。
+# 三者一并落盘到 code-review-merged.json。
 #
 # 说明：schema 未提供「问题标题」字段，条目标题取 affectedScope（AI）或 violation 描述（P3C），
 # 因此 P3C 条目不再单独输出「修复建议」行，避免与标题重复。
@@ -22,16 +24,19 @@ workdir="${LOCAL_RUN_DIR:-$PROJECT_DIR/.run}"
 source "$workdir/meta/context.env"
 
 p3c_file="${P3C_REPORT_FILE:-$repo_dir/.code-review/p3c-report.json}"
+sql_response_file="$repo_dir/.code-review/sql/sql-check-response.json"
+merged_json_file="$repo_dir/${CLAUDE_MERGED_JSON_RELATIVE_PATH:-.code-review/code-review-merged.json}"
 
 [[ -s "$ai_json_file" ]] || { log "AI JSON report not found: $ai_json_file"; exit 1; }
 
-# 归一化并合并两个来源，输出 {"findings":[...]}。
+# 归一化并合并 AI 与 P3C，得到 code-review；SQL 检查结果原样作为 sql-review。
+# 结果落盘为独立的合并 JSON 文件，同时留一份供生成 markdown 使用。
+mkdir -p "$(dirname "$merged_json_file")"
 merged_file="$(mktemp)"
 trap 'rm -f "$merged_file"' EXIT
 
 {
   jq -c '[.findings[]? | {
-    source: "AI",
     fileName: (.fileName // ""),
     location: (.location // ""),
     ruleId: (.ruleId // ""),
@@ -43,7 +48,6 @@ trap 'rm -f "$merged_file"' EXIT
 
   if [[ -s "$p3c_file" ]]; then
     jq -c '[.[]? | {
-      source: "P3C",
       fileName: (.fileName // ""),
       location: (((.fileName // "") + ":" + ((.beginline // 0) | tostring))),
       ruleId: (.ruleId // ""),
@@ -55,10 +59,20 @@ trap 'rm -f "$merged_file"' EXIT
   else
     echo '[]'
   fi
-} | jq -cs '{findings: add}' > "$merged_file"
+} | jq -cs '{codeReview: add}' > "$merged_file"
+
+# sql-review：有响应文件则原样并入，否则为 null。
+if [[ -s "$sql_response_file" ]]; then
+  jq -s '.[0] + {sqlReview: (.[1])}' "$merged_file" "$sql_response_file" > "$merged_json_file"
+else
+  jq -s '.[0] + {sqlReview: null}' "$merged_file" > "$merged_json_file"
+fi
+cp "$merged_json_file" "$merged_file"
+
+log "Merged JSON written to $merged_json_file (code-review: $(jq '.codeReview | length' "$merged_json_file") findings)"
 
 count_of() {
-  jq --arg l "$1" '[.findings[]? | select(.blockLevel == $l)] | length' "$merged_file"
+  jq --arg l "$1" '[.codeReview[]? | select(.blockLevel == $l)] | length' "$merged_file"
 }
 
 # 按文件名后缀推断代码块语言标记，识别不了则留空。
@@ -95,8 +109,7 @@ emit_level() {
   while IFS= read -r item; do
     i=$((i + 1))
 
-    local source file location rule snippet title suggestion lang
-    source="$(printf '%s' "$item" | jq -r '.source')"
+    local file location rule snippet title suggestion lang
     file="$(printf '%s' "$item" | jq -r '.fileName')"
     location="$(printf '%s' "$item" | jq -r '.location')"
     rule="$(printf '%s' "$item" | jq -r '.ruleId')"
@@ -105,7 +118,7 @@ emit_level() {
     suggestion="$(printf '%s' "$item" | jq -r '.suggestion')"
     lang="$(lang_for "$file")"
 
-    printf '%d. [%s] %s\n' "$i" "$source" "$title"
+    printf '%d. %s\n' "$i" "$title"
     printf '   - 规则：%s\n' "$rule"
     printf '   - 位置：%s\n' "$location"
     if [[ -n "$snippet" ]]; then
@@ -118,7 +131,7 @@ emit_level() {
       printf '   - 修复建议：%s\n' "$suggestion"
     fi
     printf '\n'
-  done < <(jq -c --arg l "$level" '.findings[]? | select(.blockLevel == $l)' "$merged_file")
+  done < <(jq -c --arg l "$level" '.codeReview[]? | select(.blockLevel == $l)' "$merged_file")
 }
 
 blocker="$(count_of Blocker)"

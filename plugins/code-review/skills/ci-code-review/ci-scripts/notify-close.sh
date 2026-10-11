@@ -141,12 +141,13 @@ fi
 mr_url="$(resolve_mr_url "$workdir/meta/mr_before_close.json" "$project_path")"
 
 # SQL 审查结果（若存在）：仅在严重级别为 critical 时，邮件中追加 SQL 阻塞提示与报告链接。
+# 不做响应体校验，缺字段时取空值即可。
 sql_severity=''
 sql_report_url=''
 sql_response_file="$repo_dir/.code-review/sql/sql-check-response.json"
-if [[ -s "$sql_response_file" ]] && sql_response_valid "$sql_response_file"; then
-  sql_severity="$(jq -r '.sql_severity // .severity // empty' "$sql_response_file" | xargs)"
-  sql_report_url="$(jq -r '.url // empty' "$sql_response_file" | xargs)"
+if [[ -s "$sql_response_file" ]]; then
+  sql_severity="$(jq -r '.sql_severity // .severity // empty' "$sql_response_file" 2>/dev/null | xargs)"
+  sql_report_url="$(jq -r '.url // empty' "$sql_response_file" 2>/dev/null | xargs)"
 fi
 
 send_blocking_email "$last_commit_author_email" "$mr_url" "[Code Review] $project_path !$MR_IID 存在待处理问题" "$sql_severity" "$sql_report_url"

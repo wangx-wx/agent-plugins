@@ -2442,5 +2442,15 @@
         "gitlabUrl": "http://gitlab.leyaoyao.com/vending/vending_server.git",
         "dataSourcesAlias": [],
         "dataSources": []
+    },
+    {
+        "project": "open-third-platform",
+        "gitlabUrl": "http://gitlab/root/open-third-platform.git",
+        "dataSourcesAlias": [
+            "生产环境(super)——master"
+        ],
+        "dataSources": [
+            "生产_rds_主库master"
+        ]
     }
 ]

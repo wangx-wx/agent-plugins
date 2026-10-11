@@ -27,9 +27,9 @@ elif ! curl --fail --silent --show-error \
   printf 'SQL check HTTP request failed\n' >> "$error_log"
 elif [[ ! -s "$response_file" ]]; then
   printf 'SQL check HTTP response is empty\n' >> "$error_log"
-elif ! sql_response_valid "$response_file"; then
-  printf 'SQL check HTTP response must contain non-empty sql_severity (or severity) and url fields\n' >> "$error_log"
 fi
+# 本地不做响应体校验：接口返回结构可能变化（如多个数据库实例），
+# 只判断请求是否成功、响应是否非空，具体内容原样透传。
 
 if [[ -s "$response_file" ]]; then
   log "SQL check response:"

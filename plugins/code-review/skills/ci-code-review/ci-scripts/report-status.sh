@@ -12,6 +12,7 @@ source "$workdir/meta/context.env"
 stream_file="$workdir/logs/claude.stream.json"
 report_file="$workdir/output/report.md"
 json_report_file="$repo_dir/${CLAUDE_REPORT_JSON_RELATIVE_PATH:-.code-review/code-review-report-json.json}"
+merged_json_file="$repo_dir/${CLAUDE_MERGED_JSON_RELATIVE_PATH:-.code-review/code-review-merged.json}"
 sql_response_file="$repo_dir/.code-review/sql/sql-check-response.json"
 payload_file="$workdir/output/review-status-payload.json"
 response_file="$workdir/output/review-status-response.json"
@@ -26,10 +27,10 @@ bash "$LIB_DIR/build-report.sh" "$json_report_file" "$report_file"
 # 评估结论由脚本按规则得出：存在 Blocker 或 Critical 即为「否」。
 merge_decision="$(sed -nE 's/^是否可合并[[:space:]]*(：|:)[[:space:]]*//p' "$report_file" | tail -n 1 | xargs)"
 
-# SQL 检查结果不变，仍从 SQL 检查接口响应中读取严重级别。
+# SQL 检查结果：从 SQL 检查接口响应中读取严重级别。
 sql_severity=''
 if [[ -s "$sql_response_file" ]]; then
-  sql_severity="$(jq -r '.sql_severity // .severity // empty' "$sql_response_file" | xargs)"
+  sql_severity="$(jq -r '.sql_severity // .severity // empty' "$sql_response_file" 2>/dev/null | xargs)"
 fi
 # bash 3.2 兼容：不用 ${var,,}，改用 tr 转小写
 sql_severity_lc="$(printf '%s' "$sql_severity" | tr '[:upper:]' '[:lower:]')"
@@ -47,7 +48,27 @@ if [[ "$latest_sha" != "$event_sha" ]]; then
   exit 0
 fi
 
-result_detail="AI是否可合并=${merge_decision:-未识别}; SQL严重级别=${sql_severity:-无}"
+# resultDetail：一句话说明阻塞来源（代码审查 / SQL 检查）。
+code_blocked='false'
+if [[ "$merge_decision" == 否* ]]; then
+  code_blocked='true'
+fi
+
+# SQL 仅看接口返回的 severity 是否为 critical。
+sql_blocked='false'
+if [[ "$sql_severity_lc" == 'critical' ]]; then
+  sql_blocked='true'
+fi
+
+if [[ "$code_blocked" == 'true' && "$sql_blocked" == 'true' ]]; then
+  result_detail='代码审查和 SQL 检查均存在阻塞问题'
+elif [[ "$code_blocked" == 'true' ]]; then
+  result_detail='代码审查存在阻塞问题'
+elif [[ "$sql_blocked" == 'true' ]]; then
+  result_detail='SQL 检查存在阻塞问题'
+else
+  result_detail='无阻塞问题'
+fi
 git_url="$(printf '%s' "$repo_url" | xargs)"
 
 note_file="$workdir/output/gitlab-note.md"
@@ -63,7 +84,7 @@ jq -n \
   --arg status "$status" \
   --arg resultDetail "$result_detail" \
   --arg mrUrl "$mr_url" \
-  --arg codeReviewReport "$(cat "$note_file")" \
+  --argjson codeReviewReport "$(cat "$merged_json_file")" \
   '{
     gitUrl: $gitUrl,
     branch: $branch,
