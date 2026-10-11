@@ -53,7 +53,7 @@ post_note "$note_file"
 
 mkdir -p "$workdir/output"
 cp "$report_file" "$workdir/output/claude-review-report.md"
-cp "$note_file" "$workdir/output/gitlab-note.md"
+# gitlab-note.md 本就在 output/ 下（$note_file），无需再拷贝。
 cp "$stream_file" "$workdir/output/claude-stream.json"
 
 if [[ -f "$p3c_report_file" ]]; then
