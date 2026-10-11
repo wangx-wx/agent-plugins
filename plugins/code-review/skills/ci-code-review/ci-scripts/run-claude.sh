@@ -19,7 +19,7 @@ source "$workdir/meta/context.env"
 rm -f "$stream_file" "$err_file"
 touch "$stream_file" "$err_file"
 
-claude_prompt="/code-review:java-code-review $source_branch origin/$review_base_branch"
+claude_prompt="/code-review:ci-code-review $source_branch origin/$review_base_branch"
 schema_file="${REVIEW_SCHEMA_FILE:-$LIB_DIR/code-review-schema.json}"
 
 [[ -s "$schema_file" ]] || { log "schema file not found: $schema_file"; exit 1; }
