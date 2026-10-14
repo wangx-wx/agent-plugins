@@ -280,8 +280,12 @@
     {
         "project": "allowlist-server",
         "gitlabUrl": "http://gitlab.leyaoyao.com/middleStage/base/component/allowlist-server.git",
-        "dataSourcesAlias": [],
-        "dataSources": []
+        "dataSourcesAlias": [
+            "生产环境(super)——master"
+        ],
+        "dataSources": [
+            "生产_rds_主库master"
+        ]
     },
     {
         "project": "customer-business",

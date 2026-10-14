@@ -14,6 +14,7 @@
           "location",
           "ruleId",
           "blockLevel",
+          "title",
           "codeSnippet",
           "affectedScope",
           "suggestion"
@@ -30,12 +31,16 @@
           },
           "ruleId": {
             "type": "string",
-            "description": "规则编号，如 BASE-00001、JCR-00001、SQL-00001 或 P3C 规则名"
+            "description": "规则编号，如 JAVA-00001、SQL-00001"
           },
           "blockLevel": {
             "type": "string",
             "enum": ["Blocker", "Critical", "Major", "Minor"],
             "description": "问题级别"
+          },
+          "title": {
+            "type": "string",
+            "description": "问题标题，一句话描述问题"
           },
           "codeSnippet": {
             "type": "string",
