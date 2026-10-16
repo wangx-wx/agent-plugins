@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# stage 6（本地版）：判定 PASSED/BLOCKED 并回传状态。
+# stage 7：判定 PASSED/BLOCKED 并回传状态。
 set -euo pipefail
 
 REVIEW_LOG_PREFIX='review-status'
@@ -84,7 +84,7 @@ jq -n \
   --arg status "$status" \
   --arg resultDetail "$result_detail" \
   --arg mrUrl "$mr_url" \
-  --argjson codeReviewReport "$(cat "$merged_json_file")" \
+  --arg codeReviewReport "$(cat "$merged_json_file")" \
   '{
     gitUrl: $gitUrl,
     branch: $branch,

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# stage 7（本地版）：把审查报告回写到 MR 讨论区。
+# stage 8：把审查报告回写到 MR 讨论区。
 set -euo pipefail
 
 source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
@@ -21,8 +21,6 @@ sql_dir="$repo_dir/.code-review/sql"
 sql_result_file="$sql_dir/sql-extraction-result.json"
 sql_response_file="$sql_dir/sql-check-response.json"
 sql_error_log="$sql_dir/error.log"
-p3c_report_file="$repo_dir/.code-review/p3c-report.json"
-p3c_error_log="$repo_dir/.code-review/p3c-error.log"
 
 if [[ -s "$report_file" ]]; then
   # stage 6 已生成（或单独跑本 stage 时已存在），沿用它，避免覆盖。
@@ -56,12 +54,6 @@ cp "$report_file" "$workdir/output/claude-review-report.md"
 # gitlab-note.md 本就在 output/ 下（$note_file），无需再拷贝。
 cp "$stream_file" "$workdir/output/claude-stream.json"
 
-if [[ -f "$p3c_report_file" ]]; then
-  cp "$p3c_report_file" "$workdir/output/p3c-report.json"
-fi
-if [[ -f "$p3c_error_log" ]]; then
-  cp "$p3c_error_log" "$workdir/output/p3c-error.log"
-fi
 if [[ -f "$sql_result_file" ]]; then
   cp "$sql_result_file" "$workdir/output/sql-extraction-result.json"
 fi

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# stage 8（本地版）：BLOCKED 时发送邮件并关闭 MR。
+# stage 9：BLOCKED 时发送邮件并关闭 MR。
 # 注意：本脚本会真实关闭 MR 并发邮件。若只想验证流程，请设置 LOCAL_DRY_RUN=1。
 set -euo pipefail
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# stage 1+2（本地版）：映射事件、校验、clone 源码分支、生成 context.env。
+# stage 1+2：映射事件、校验、clone 源码分支、生成 context.env。
 set -euo pipefail
 
 source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
@@ -89,7 +89,7 @@ repo_url="${repo_url:-${REPO_HTTP_URL:-}}"
 current_sha="$(jq -r '.sha // .diff_refs.head_sha // empty' "$workdir/meta/mr.json")"
 event_sha="${COMMIT_SHA:-$current_sha}"
 source_branch="$(jq -r '.source_branch // empty' "$workdir/meta/mr.json")"
-# 本地测试：允许用 SOURCE_BRANCH 显式覆盖
+# 允许用 SOURCE_BRANCH 显式覆盖
 source_branch="${SOURCE_BRANCH:-$source_branch}"
 target_branch="$(jq -r '.target_branch // empty' "$workdir/meta/mr.json")"
 target_branch="${TARGET_BRANCH:-$target_branch}"

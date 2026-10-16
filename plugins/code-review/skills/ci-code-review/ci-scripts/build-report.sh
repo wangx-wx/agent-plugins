@@ -1,18 +1,16 @@
 #!/usr/bin/env bash
-# 辅助（本地版）：汇总 AI 审查与 P3C 检查结果，生成 code-review-report.md。
+# 辅助：汇总 AI 审查结果，生成 code-review-report.md。
 #
 # 用法：build-report.sh <ai_json_file> <output_md>
 # 依赖 context.env 中的 source_branch / review_base_branch / repo_dir。
 #
 # 数据来源：
-#   - AI 审查：{findings:[{fileName,location,ruleId,blockLevel,codeSnippet,affectedScope,suggestion}]}
-#   - P3C 检查：$repo_dir/.code-review/p3c-report.json（扁平数组，字段见下）
+#   - AI 审查：{findings:[{fileName,location,ruleId,blockLevel,title,codeSnippet,affectedScope,suggestion}]}
 #   - SQL 检查：$repo_dir/.code-review/sql/sql-check-response.json（接口原始响应）
-# AI 与 P3C 合并为 code-review；SQL 检查结果原样放入 sql-review。
-# 三者一并落盘到 code-review-merged.json。
+# AI 审查结果归一化后作为 code-review；SQL 检查结果原样放入 sql-review。
+# 两者一并落盘到 code-review-merged.json。
 #
-# 说明：schema 未提供「问题标题」字段，条目标题取 affectedScope（AI）或 violation 描述（P3C），
-# 因此 P3C 条目不再单独输出「修复建议」行，避免与标题重复。
+# 说明：AI 条目标题取 schema 的 title，affectedScope 作为独立字段透传。
 set -euo pipefail
 
 source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
@@ -23,43 +21,27 @@ output_file="${2:?output_file is required}"
 workdir="${LOCAL_RUN_DIR:-$PROJECT_DIR/.run}"
 source "$workdir/meta/context.env"
 
-p3c_file="${P3C_REPORT_FILE:-$repo_dir/.code-review/p3c-report.json}"
 sql_response_file="$repo_dir/.code-review/sql/sql-check-response.json"
 merged_json_file="$repo_dir/${CLAUDE_MERGED_JSON_RELATIVE_PATH:-.code-review/code-review-merged.json}"
 
 [[ -s "$ai_json_file" ]] || { log "AI JSON report not found: $ai_json_file"; exit 1; }
 
-# 归一化并合并 AI 与 P3C，得到 code-review；SQL 检查结果原样作为 sql-review。
+# 归一化 AI 审查结果，得到 code-review；SQL 检查结果原样作为 sql-review。
 # 结果落盘为独立的合并 JSON 文件，同时留一份供生成 markdown 使用。
 mkdir -p "$(dirname "$merged_json_file")"
 merged_file="$(mktemp)"
 trap 'rm -f "$merged_file"' EXIT
 
-{
-  jq -c '[.findings[]? | {
-    fileName: (.fileName // ""),
-    location: (.location // ""),
-    ruleId: (.ruleId // ""),
-    blockLevel: (.blockLevel // ""),
-    codeSnippet: (.codeSnippet // ""),
-    title: (.affectedScope // ""),
-    suggestion: (.suggestion // "")
-  }]' "$ai_json_file"
-
-  if [[ -s "$p3c_file" ]]; then
-    jq -c '[.[]? | {
-      fileName: (.fileName // ""),
-      location: (((.fileName // "") + ":" + ((.beginline // 0) | tostring))),
-      ruleId: (.ruleId // ""),
-      blockLevel: (.blockLevel // ""),
-      codeSnippet: "",
-      title: (.suggestion // ""),
-      suggestion: ""
-    }]' "$p3c_file"
-  else
-    echo '[]'
-  fi
-} | jq -cs '{codeReview: add}' > "$merged_file"
+jq -c '{codeReview: [.findings[]? | {
+  fileName: (.fileName // ""),
+  location: (.location // ""),
+  ruleId: (.ruleId // ""),
+  blockLevel: (.blockLevel // ""),
+  codeSnippet: (.codeSnippet // ""),
+  title: (.title // ""),
+  affectedScope: (.affectedScope // ""),
+  suggestion: (.suggestion // "")
+}]}' "$ai_json_file" > "$merged_file"
 
 # sql-review：有响应文件则原样并入，否则为 null。
 if [[ -s "$sql_response_file" ]]; then
@@ -109,12 +91,13 @@ emit_level() {
   while IFS= read -r item; do
     i=$((i + 1))
 
-    local file location rule snippet title suggestion lang
+    local file location rule snippet title scope suggestion lang
     file="$(printf '%s' "$item" | jq -r '.fileName')"
     location="$(printf '%s' "$item" | jq -r '.location')"
     rule="$(printf '%s' "$item" | jq -r '.ruleId')"
     snippet="$(printf '%s' "$item" | jq -r '.codeSnippet')"
     title="$(printf '%s' "$item" | jq -r '.title')"
+    scope="$(printf '%s' "$item" | jq -r '.affectedScope // ""')"
     suggestion="$(printf '%s' "$item" | jq -r '.suggestion')"
     lang="$(lang_for "$file")"
 
@@ -126,6 +109,9 @@ emit_level() {
       printf '     ```%s\n' "$lang"
       printf '%s\n' "$snippet" | sed 's/^/     /'
       printf '     ```\n'
+    fi
+    if [[ -n "$scope" ]]; then
+      printf '   - 影响：%s\n' "$scope"
     fi
     if [[ -n "$suggestion" ]]; then
       printf '   - 修复建议：%s\n' "$suggestion"
@@ -139,7 +125,7 @@ critical="$(count_of Critical)"
 major="$(count_of Major)"
 minor="$(count_of Minor)"
 
-# 评估结论：存在 Blocker 或 Critical 即为「否」（AI 与 P3C 合并后统一判定）。
+# 评估结论：存在 Blocker 或 Critical 即为「否」。
 can_merge='是'
 if [[ "$blocker" != "0" || "$critical" != "0" ]]; then
   can_merge='否'

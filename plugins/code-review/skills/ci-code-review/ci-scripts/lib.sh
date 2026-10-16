@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 代码审查流水线公共函数库（本地测试版）。
+# 代码审查流水线公共函数库。
 # 由同目录的各步骤脚本 source；调用方可用 REVIEW_LOG_PREFIX 指定日志前缀。
 
 # LIB_DIR：脚本自身所在目录（review-local/scripts），用于定位同目录的兄弟脚本与 schema。

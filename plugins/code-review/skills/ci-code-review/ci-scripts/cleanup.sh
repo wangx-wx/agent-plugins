@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 辅助（本地版）：清理运行目录。默认只清理 runtime 子目录，保留 meta/output 供排查。
+# 辅助：清理运行目录。默认只清理 runtime 子目录，保留 meta/output 供排查。
 set +e
 
 source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"

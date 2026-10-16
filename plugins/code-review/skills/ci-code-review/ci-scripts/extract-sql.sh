@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# stage 4（本地版）：抽取 MyBatis 变更 SQL。
+# stage 5：抽取 MyBatis 变更 SQL。
 set -u -o pipefail
 
 REVIEW_LOG_PREFIX='sql-check'
@@ -26,18 +26,6 @@ elif ! node "$SQL_EXTRACTION_SCRIPT_PATH" \
     --target "origin/$review_base_branch" \
     --output "$result_file"; then
   [[ -s "$error_log" ]] || printf 'SQL extraction command failed\n' > "$error_log"
-fi
-
-# 本地测试：抽取脚本按仓库 remote 匹配数据源，本地仓库地址匹配不到，
-# 这里把请求体中的 gitlabUrl 覆盖为固定值，便于联调 SQL 检查接口。
-if [[ -n "${SQL_OVERRIDE_GITLAB_URL:-}" && -s "$result_file" ]]; then
-  tmp_json="$(mktemp)"
-  if jq --arg u "$SQL_OVERRIDE_GITLAB_URL" '.gitlabUrl = $u' "$result_file" > "$tmp_json" 2>/dev/null; then
-    mv "$tmp_json" "$result_file"
-    log "Overrode gitlabUrl to $SQL_OVERRIDE_GITLAB_URL"
-  else
-    rm -f "$tmp_json"
-  fi
 fi
 
 if [[ -s "$error_log" ]]; then

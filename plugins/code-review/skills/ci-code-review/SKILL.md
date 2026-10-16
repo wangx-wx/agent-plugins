@@ -24,19 +24,21 @@ disable-model-invocation: true
 > 后续阶段中，`{source}` 代表最终确定的 source 分支，`{target}` 代表最终确定的 target 分支，`{repo-path}` 代表仓库路径。
 > `{skill-path}` = ${CLAUDE_SKILL_DIR}
 
-## 阶段2：并行启动 2 个 Review Agents
+## 阶段2：并行启动 3 个 Review Agents
 
-使用 Agent tool 在一条消息中同时启动 2 个Agent（`subagent_type: "general-purpose"`），每个代理独立完成各自的检查任务并返回结果，主 Agent 不参与具体的检查过程，仅负责收集结果。
-忽略 `pom.xml`文件的审查
+使用 Agent tool 在一条消息中同时启动 3 个 Agent，每个代理独立完成各自的检查任务并返回结果，主 Agent 不参与具体的检查过程，仅负责收集结果。
 
-并行启动以下 2 个子 Agent，禁止指导子Agent审查步骤：
+`subagent_type` 必须使用**插件作用域名**（带 `code-review:` 前缀），不得写裸名，也不得写 `general-purpose`。
 
-1. **Java 规范检查**：派发Agent `java-standards-reviewer`，同时传入 `{source}`、`{target}`、`{repo-path}`
-2. **数据库 XML 检查**：派发Agent `db-xml-reviewer`，同时传入 `{source}`、`{target}`、`{repo-path}`
+并行启动以下 3 个子 Agent，禁止指导子Agent审查步骤：
+
+1. **P3C 规范检查**：派发Agent `code-review:p3c-reviewer`，同时传入 `{source}`、`{target}`、`{repo-path}`
+2. **Java 规范检查**：派发Agent `code-review:java-standards-reviewer`，同时传入 `{source}`、`{target}`、`{repo-path}`
+3. **数据库 XML 检查**：派发Agent `code-review:db-xml-reviewer`，同时传入 `{source}`、`{target}`、`{repo-path}`
 
 ## 阶段3：汇总输出审查报告
 
 收集所有 Agent 返回的 JSON 数组结果:
 
-1. **合并结果**：将 2 个 Agent 的 JSON 数组合并为一个结果报告
+1. **合并结果**：将 3 个 Agent 的 JSON 数组合并为一个结果报告
 2. **分级排列**：按 `blockLevel` 严重程度排序：Blocker → Critical → Major → Minor，禁止修改子Agent返回的 `blockLevel` 字段值，禁止修改子Agent返回的 `ruleId` 字段值

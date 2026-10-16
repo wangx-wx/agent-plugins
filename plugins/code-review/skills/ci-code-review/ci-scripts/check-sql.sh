@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# stage 5（本地版）：调用 SQL 检查接口。
+# stage 6：调用 SQL 检查接口。
 set -u -o pipefail
 
 REVIEW_LOG_PREFIX='sql-check'
@@ -28,7 +28,7 @@ elif ! curl --fail --silent --show-error \
 elif [[ ! -s "$response_file" ]]; then
   printf 'SQL check HTTP response is empty\n' >> "$error_log"
 fi
-# 本地不做响应体校验：接口返回结构可能变化（如多个数据库实例），
+# 不做响应体校验：接口返回结构可能变化（如多个数据库实例），
 # 只判断请求是否成功、响应是否非空，具体内容原样透传。
 
 if [[ -s "$response_file" ]]; then

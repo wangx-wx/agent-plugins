@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 辅助（本地版）：组装 MR 评论正文。
+# 辅助：组装 MR 评论正文。
 set -euo pipefail
 
 source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
