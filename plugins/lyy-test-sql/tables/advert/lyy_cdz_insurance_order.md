@@ -57,6 +57,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 投保订单记录
+
+```sql
+select * from lyy_cdz_insurance_order where lyy_user_id =2200006170 order by created  desc
+```
+
 ## 索引
 
 - 无（DDL 中未定义索引）

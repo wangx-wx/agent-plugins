@@ -5,10 +5,7 @@ domain: 充电桩
 dbDictId: 10082
 description: 充电桩保险购卡表
 use_cases:
-  - 保险周卡
-  - 保险月卡
-  - V会员保险月卡
-  - 星会员保险月卡
+  - 保险周卡、保险月卡、V会员保险月卡、星会员保险月卡
 ---
 
 # lyy_cdz_insurance_buy_card
@@ -52,6 +49,14 @@ use_cases:
 ## 查询规则
 
 - 待补充
+
+## 参考 SQL
+
+### 保险周卡、保险月卡、V会员保险月卡、星会员保险月卡
+
+```sql
+select * from lyy_cdz_insurance_buy_card where lyy_user_id =2200006170 order by created  desc
+```
 
 ## 索引
 

@@ -5,8 +5,7 @@ domain: 洗水
 dbDictId: 10087
 description: 洗水用户维度信息表
 use_cases:
-  - 查洗水商创活动退款
-  - 投诉记录
+  - 查洗水商创活动退款、投诉记录
 ---
 
 # wash_dimension_user_info
@@ -17,7 +16,7 @@ use_cases:
 |---|---|---|
 | id | numeric(12,0) | ID |
 | user_id | numeric(10,0) | 商家ID |
-| activity_info | jsonb | 活动相关信息 |
+| activity_info | jsonb | 记录退款及投诉次数 |
 | created_time | timestamp without time zone | 创建时间 |
 | updated_time | timestamp without time zone | 更新时间 |
 | deleted | boolean | true表示已删除 |
@@ -27,6 +26,14 @@ use_cases:
 ## 查询规则
 
 - 待补充
+
+## 参考 SQL
+
+### 查洗水商创活动退款、投诉记录
+
+```sql
+select * from wash_dimension_user_info
+```
 
 ## 索引
 

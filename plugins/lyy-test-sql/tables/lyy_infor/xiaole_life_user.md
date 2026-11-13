@@ -41,6 +41,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查app用户信息
+
+```sql
+select * from xiaole_life_user xlu where telephone in ('15915908118')
+```
+
 ## 索引
 
 - PK: id

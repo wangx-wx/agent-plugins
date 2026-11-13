@@ -24,6 +24,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查询兑币机下发广告记录
+
+```sql
+select * from lyy_media_ads_device where lyy_media_ads_device_id in (158466,158464)
+```
+
 ## 索引
 
 - PK: lyy_media_ads_device_id

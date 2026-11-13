@@ -88,6 +88,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查询商家ID
+
+```sql
+select * from ad_org  where value like '%17665126143%'
+```
+
 ## 索引
 
 - PK: ad_org_id

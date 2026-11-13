@@ -53,6 +53,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查设备对应的协议
+
+```sql
+SELECT id, equipment_id, product_number, system_version, is_pulse, app_version, signal,protocol_id, gps_support, return_ability, low_power FROM lyy.iot_equipment_setting WHERE equipment_id=？;
+```
+
 ## 索引
 
 - PK: id

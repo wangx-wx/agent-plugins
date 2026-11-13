@@ -39,6 +39,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 京东权益领取记录
+
+```sql
+select * from jd_insurance_start_record where user_id=2200020344 and create_time >= '2026-10-3';
+```
+
 ## 索引
 
 - PK: id

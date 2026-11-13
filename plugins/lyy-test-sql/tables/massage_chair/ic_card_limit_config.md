@@ -29,6 +29,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查ic卡限额信息
+
+```sql
+select * from ic_card_limit_config iclc where store_id ='1066577' order by create_time desc
+```
+
 ## 索引
 
 - PK: id

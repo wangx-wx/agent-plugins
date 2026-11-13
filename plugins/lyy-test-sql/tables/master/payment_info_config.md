@@ -34,6 +34,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查appid路由配置
+
+```sql
+select * from payment_info_config where distributor_id = 2267406
+```
+
 ## 索引
 
 - PK: id

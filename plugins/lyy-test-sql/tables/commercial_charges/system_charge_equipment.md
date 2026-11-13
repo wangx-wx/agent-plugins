@@ -33,6 +33,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 收费设备
+
+```sql
+select * from  system_charge_equipment where equipment_value ='87150504'
+```
+
 ## 索引
 
 - PK: system_charge_equipment_id

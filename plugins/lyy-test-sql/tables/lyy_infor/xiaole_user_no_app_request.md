@@ -30,6 +30,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查app不使用申请黑名单
+
+```sql
+select * from xiaole_user_no_app_request xunar
+```
+
 ## 索引
 
 - PK: id

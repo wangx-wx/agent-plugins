@@ -75,6 +75,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 充电业务订单
+
+```sql
+select * from lyy_charging_order where out_trade_no ='PA303026101011333322000143141005'
+```
+
 ## 索引
 
 - 无（DDL 中未定义索引）

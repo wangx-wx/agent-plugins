@@ -48,6 +48,19 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查询美团授权记录
+
+```sql
+select
+* 
+from 
+MEITUAN_STORE_APPLY 
+where lyy_distributor_id = 2149938 
+and apply_status = 'Pass' and pay_status='Pay' AND is_del = 'N' limit 1
+```
+
 ## 索引
 
 - PK: meituan_store_apply_id

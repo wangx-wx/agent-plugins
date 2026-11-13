@@ -5,8 +5,7 @@ domain: 充电桩
 dbDictId: 10082
 description: 充电桩自动续费会员卡
 use_cases:
-  - V会员
-  - 星会员卡表
+  - V会员、星会员卡表
 ---
 
 # lyy_cdz_member_card
@@ -50,6 +49,14 @@ use_cases:
 ## 查询规则
 
 - 待补充
+
+## 参考 SQL
+
+### V会员、星会员卡表
+
+```sql
+select * from lyy_cdz_member_card where lyy_user_id =22000140791 and third_order_no ='WXCDZ220002410620261010155849021' order by created  desc
+```
 
 ## 索引
 

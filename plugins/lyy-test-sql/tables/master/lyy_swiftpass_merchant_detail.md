@@ -89,6 +89,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查商家资料
+
+```sql
+select * from lyy_swiftpass_merchant_detail where ad_org_id = 1073610;
+```
+
 ## 索引
 
 - PK: lyy_swiftpass_merchant_detail_id

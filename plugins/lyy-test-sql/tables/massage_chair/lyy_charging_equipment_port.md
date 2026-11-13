@@ -33,6 +33,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 设备端口
+
+```sql
+select * from lyy_charging_equipment_port where unique_code='0000000087150504'
+```
+
 ## 索引
 
 - PK: id

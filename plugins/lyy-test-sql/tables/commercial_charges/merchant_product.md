@@ -5,8 +5,7 @@ domain: 中台
 dbDictId: 10089
 description: 商家产品表
 use_cases:
-  - saas
-  - ai经营分析账单
+  - saas、ai经营分析账单
 ---
 
 # merchant_product
@@ -46,6 +45,14 @@ use_cases:
 ## 查询规则
 
 - 待补充
+
+## 参考 SQL
+
+### saas、ai经营分析账单
+
+```sql
+select * from merchant_product where merchant_id =1094781 and product_code ='SAAS' order by created desc;
+```
 
 ## 索引
 

@@ -37,6 +37,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 用户广告红包权益
+
+```sql
+select * from lyy_distributor_advertise_coupon where lyy_user_id=33159152 and ad_org_id=1032469 order by created  desc
+```
+
 ## 索引
 
 - PK: lyy_distributor_advertise_coupon_id

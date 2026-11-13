@@ -35,6 +35,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 权益类型
+
+```sql
+select * from lyy.um_benefit where merchant_id ='1035814' order by create_time desc
+```
+
 ## 索引
 
 - PK: id

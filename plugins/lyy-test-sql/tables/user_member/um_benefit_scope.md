@@ -26,6 +26,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 权益范围
+
+```sql
+select * from lyy.um_benefit_scope where benefit_id ='1152274125952294912'
+```
+
 ## 索引
 
 - PK: id

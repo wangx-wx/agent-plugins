@@ -37,6 +37,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 收费流水
+
+```sql
+select * from  system_charge_equipment_bill_flow where system_charge_equipment_bill_id =261000
+```
+
 ## 索引
 
 - PK: system_charge_equipment_bill_flow_id

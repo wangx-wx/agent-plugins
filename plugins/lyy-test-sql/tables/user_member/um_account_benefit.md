@@ -43,6 +43,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 权益明细
+
+```sql
+select * from um_account_benefit where user_id='2200009773'and merchant_id=1035814  order by update_time  desc ;
+```
+
 ## 索引
 
 - 无（DDL 中未定义索引）

@@ -58,6 +58,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 站点
+
+```sql
+select * from  infra_station where merchant_id =1036030 and station_id=1123364
+```
+
 ## 索引
 
 - PK: id

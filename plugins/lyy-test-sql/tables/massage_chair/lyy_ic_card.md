@@ -5,8 +5,7 @@ domain: 充电桩、洗水
 dbDictId: 10097
 description: IC卡表
 use_cases:
-  - IC卡表
-  - 查ic卡信息
+  - IC卡表、查ic卡信息
 ---
 
 # lyy_ic_card
@@ -55,6 +54,20 @@ use_cases:
 ## 查询规则
 
 - 待补充
+
+## 参考 SQL
+
+### IC卡表
+
+```sql
+select * from lyy_ic_card where card_no ='2788463341' and merchant_id =1036030
+```
+
+### 查ic卡信息
+
+```sql
+select * from lyy_ic_card lic where card_no ='06909'order by create_time desc limit 10
+```
 
 ## 索引
 

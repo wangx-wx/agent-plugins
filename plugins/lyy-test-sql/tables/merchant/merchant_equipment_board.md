@@ -58,6 +58,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查设备属于XYJ还是XYJY
+
+```sql
+select * from merchant_equipment_board where equipment_value = '22514034' limit 10
+```
+
 ## 索引
 
 - PK: id

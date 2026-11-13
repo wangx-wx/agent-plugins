@@ -38,6 +38,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 代理商设备表
+
+```sql
+select * from agent_equipment where equipment_value ='87150504'
+```
+
 ## 索引
 
 - PK: agent_equipment_id

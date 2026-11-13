@@ -29,6 +29,14 @@ use_cases: 充电订单对应功率表
 
 - 待补充
 
+## 参考 SQL
+
+### 充电订单对应功率过程
+
+```sql
+select * from lyy_charging_order_power where charging_order_id =1285629
+```
+
 ## 索引
 
 - 无（DDL 中未定义索引）

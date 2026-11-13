@@ -42,6 +42,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查询抖音商户授权
+
+```sql
+select * from tiktok_activity_coupon where poi_id='7284593202361796669'  and isactive='Y' and sku_id='1838044671248384'
+```
+
 ## 索引
 
 - PK: tiktok_activity_coupon_id

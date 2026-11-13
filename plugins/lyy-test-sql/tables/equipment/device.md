@@ -33,6 +33,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查设备初始化
+
+```sql
+SELECT * FROM lyy.device WHERE device_id=？;
+```
+
 ## 索引
 
 - PK: id

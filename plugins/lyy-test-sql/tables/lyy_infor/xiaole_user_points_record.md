@@ -33,6 +33,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查app用户积分记录
+
+```sql
+select * from xiaole_user_points_record xupr where user_id ='2399' order by create_time desc
+```
+
 ## 索引
 
 - PK: id

@@ -27,6 +27,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查不跳转app用户黑名单
+
+```sql
+select * from xiaole_black_user where black_type = 4
+```
+
 ## 索引
 
 - PK: id

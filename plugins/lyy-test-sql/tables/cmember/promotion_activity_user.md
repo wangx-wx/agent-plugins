@@ -35,6 +35,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 参考查询
+
+```sql
+select * from promotion_activity_user where lyy_user_id =2200020344 and  created >= '2026-10-3' and lyy_distributor_id = 1032498 ;
+```
+
 ## 索引
 
 - 无（DDL 中未定义索引）

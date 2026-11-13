@@ -42,6 +42,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查询是否资金池商家
+
+```sql
+select * from ad_org_attach  where ad_org_id=1093804
+```
+
 ## 索引
 
 - PK: ad_org_attach_id

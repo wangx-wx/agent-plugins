@@ -82,6 +82,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 订单
+
+```sql
+select * from  order_charge where merchant_id =1036438 and member_id=34293078 and pay_id='PA1105220915172024342930788074'
+```
+
 ## 索引
 
 - PK: id

@@ -129,6 +129,31 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查询每个订单在移动端报表内实际增加和退款金额
+
+```sql
+select aa.out_trade_no, aa.amount, aa.receivable_amount,aa.store_id ,aa.e_store_name,aa.e_code,aa.create_time ,aa.trade_time,
+       dprrt.refund_amount, dprrt.receivable_refund_amount
+from dwd_payment_payment_record_trade aa
+left join (
+    select out_trade_no, sum(refund_amount) as refund_amount,
+           sum(receivable_refund_amount) as receivable_refund_amount
+    from dwd_payment_refund_record_trade
+    where (ds>='2026-05-22' and ds<='2026-05-22')
+     and status not in ('3','4')
+    group by out_trade_no
+) dprrt on aa.out_trade_no =dprrt.out_trade_no
+where (aa.ds>='2026-05-22' and aa.ds<='2026-05-22')
+ and aa.distributor_id ='1073579'
+  -- and aa.store_id ='1092037'
+   --and aa.e_code ='77289630'
+-- and aa.e_store_name ='no分账'
+-- and aa.out_trade_no ='PA103026012915421922000124151436'
+order by aa.create_time desc;
+```
+
 ## 索引
 
 - PK: (out_trade_no, order_no, ds)

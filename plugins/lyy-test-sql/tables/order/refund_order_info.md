@@ -62,6 +62,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查订单退款信息
+
+```sql
+select *  from refund_order_info roi where distributor_id ='2347269' and refund_success_time >'2025-11-03 00:00:00' and refund_success_time <'2025-11-04 00:00:00'
+```
+
 ## 索引
 
 - PK: (id, refund_time)

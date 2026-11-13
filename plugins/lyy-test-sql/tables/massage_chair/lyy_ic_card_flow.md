@@ -5,8 +5,7 @@ domain: 充电桩、洗水
 dbDictId: 10097
 description: 卡流水金额
 use_cases:
-  - IC卡流水记录
-  - 查ic卡流水
+  - IC卡流水记录、查ic卡流水
 ---
 
 # lyy_ic_card_flow
@@ -51,6 +50,20 @@ use_cases:
 ## 查询规则
 
 - 待补充
+
+## 参考 SQL
+
+### IC卡流水记录
+
+```sql
+select * from lyy_ic_card_flow where card_no ='2788463341' order by create_time  desc
+```
+
+### 查ic卡流水
+
+```sql
+select * from lyy_ic_card_flow licf where card_no ='6217003110010638458' order by create_time desc limit 10
+```
 
 ## 索引
 

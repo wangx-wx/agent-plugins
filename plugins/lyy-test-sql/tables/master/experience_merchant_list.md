@@ -46,6 +46,16 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查体验期
+
+```sql
+select *
+from experience_merchant_list
+where ad_org_id = '1094750';
+```
+
 ## 索引
 
 - PK: experience_merchant_list_id

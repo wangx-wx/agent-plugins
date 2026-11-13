@@ -34,6 +34,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 多金宝查询某个会员卡号信息
+
+```sql
+select * from t_merchant_card where merchant_id = 1596190 and card_no = 'LYYDJB100080';
+```
+
 ## 索引
 
 - PK: id

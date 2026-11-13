@@ -34,6 +34,16 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查分账用户信息
+
+```sql
+select *
+from lyy_divide_merchant_info
+where  ad_org_id=1094552;
+```
+
 ## 索引
 
 - PK: id

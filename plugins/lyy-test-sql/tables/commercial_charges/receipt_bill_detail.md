@@ -47,6 +47,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查询账单明细
+
+```sql
+select * from receipt_bill_detail where merchant_id ='1095114'and product_code='SAAS' order by created desc
+```
+
 ## 索引
 
 - PK: id
