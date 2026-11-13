@@ -33,6 +33,16 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查手续费外扣
+
+```sql
+select *
+from payment_fee_deduction_equipment
+where equipment_value ='12200001';
+```
+
 ## 索引
 
 - PK: id

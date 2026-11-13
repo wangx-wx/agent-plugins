@@ -38,6 +38,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 设备整桩投保记录
+
+```sql
+select * from lyy_cdz_insurance_equipment_order_detail where out_trade_no ='PA116125081211305100331796651102'
+```
+
 ## 索引
 
 - PK: lyy_cdz_insurance_equipment_order_detail_id

@@ -53,6 +53,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 领取福利记录
+
+```sql
+select * from massage_automatic_debit where  created >= '2026-3-3' and user_id = 2200012720 ;
+```
+
 ## 索引
 
 - PK: id

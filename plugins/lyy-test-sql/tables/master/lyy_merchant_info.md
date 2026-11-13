@@ -39,6 +39,16 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查商户信息
+
+```sql
+select *
+from lyy_merchant_info
+where ad_org_id = 1094949;
+```
+
 ## 索引
 
 - PK: lyy_merchant_info_id

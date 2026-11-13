@@ -39,6 +39,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 家充设备活动表
+
+```sql
+select * from  family_equipment_vip where equipment_code ='880240422'
+```
+
 ## 索引
 
 - PK: id

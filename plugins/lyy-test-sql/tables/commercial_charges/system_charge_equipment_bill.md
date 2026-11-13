@@ -35,6 +35,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 收费规则
+
+```sql
+select * from  system_charge_equipment_bill where lyy_equipment_id =1258164
+```
+
 ## 索引
 
 - PK: system_charge_equipment_bill_id

@@ -56,6 +56,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查询商家风控补贴明细
+
+```sql
+SELECT * FROM lyy_request_history WHERE ad_org_id = 1497193 AND created  >= '2024-01-01 00:00:00'
+```
+
 ## 索引
 
 - 无（DDL 中未定义索引）

@@ -73,6 +73,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 会员流水
+
+```sql
+select * from um_account_record uar  where uar.merchant_id  = '1035814' and uar.user_id  = '2200009773' order by uar.create_time desc;
+```
+
 ## 索引
 
 - 无（DDL 中未定义索引）

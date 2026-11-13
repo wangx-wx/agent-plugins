@@ -33,6 +33,17 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查洗水商家维度商创活动
+
+```sql
+SELECT id, merchant_id, equipment_value, product_type, scene, type, remark, created_time, updated_time, deleted, created_by, updated_by FROM wash_activity_rule_equipment 
+WHERE 1=1 AND merchant_id IN ( 1036016 ) AND product_type IN ( 4 ) AND type = 1 and deleted = false ORDER BY updated_time DESC LIMIT 10
+```
+
+> 注：该 SQL 的 FROM 表为 `wash_activity_rule_equipment`。源 Excel 的表名列写作 `promotion_activity_merchant`，属转录错误（详见核对报告 #55）。
+
 ## 索引
 
 - PK: promotion_activity_merchant_id

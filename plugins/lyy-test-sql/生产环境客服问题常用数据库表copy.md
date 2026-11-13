@@ -65,7 +65,7 @@ SELECT * FROM lyy_request_history WHERE ad_org_id = 1497193 AND created  >= '202
 
 ```sql
 -- 【tiktok_activity_order】查询抖音订单
-select * from tiktok_activity_order where skuId='7284593202361796669'
+select * from tiktok_activity_order where sku_id='7284593202361796669'
 
 -- 【tiktok_activity_poi】查询抖音商户门店
 select * from tiktok_activity_poi where poi_id='7284593202361796669'
@@ -1267,7 +1267,7 @@ select * from payment_info_config where distributor_id = 2267406
 
 ```sql
 -- 【insurance_user_benefit_card】权益表
-select * from insurance_user_benefit_card where lyy_user_id in(2200020344) and created >= '2026-10-10';
+select * from insurance_user_benefit_card where user_id in(2200020344) and created >= '2026-10-10';
 
 -- 【insurance_order】权益订单表
 select * from insurance_order   where lyy_user_id in(2200020344) and created >= '2026-10-10' and distributor_id ='1032498';

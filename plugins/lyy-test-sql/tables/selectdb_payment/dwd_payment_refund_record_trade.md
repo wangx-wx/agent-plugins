@@ -116,6 +116,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查询退款交易
+
+```sql
+select * from dwd_payment_refund_record_trade where ds='2026-02-03' and distributor_id = '1399163' and e_code ='83918187'
+```
+
 ## 索引
 
 - PK: (refund_record_no, out_trade_no, refund_no, order_no, ds)

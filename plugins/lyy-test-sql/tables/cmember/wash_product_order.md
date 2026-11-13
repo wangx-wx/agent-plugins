@@ -38,6 +38,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查洗水商创产品
+
+```sql
+select * from wash_product_order
+```
+
 ## 索引
 
 - PK: id

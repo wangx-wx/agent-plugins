@@ -5,9 +5,7 @@ domain: 充电桩
 dbDictId: 10082
 description: 充电桩商创活动黑名单
 use_cases:
-  - 用户
-  - 场地
-  - 商家黑名单
+  - 用户、场地、商家黑名单
 ---
 
 # lyy_cdz_activity_black_list
@@ -35,6 +33,14 @@ use_cases:
 ## 查询规则
 
 - 待补充
+
+## 参考 SQL
+
+### 用户、场地、商家黑名单
+
+```sql
+select * from lyy_cdz_activity_black_list where business_type =1 and phone ='18877571383'
+```
 
 ## 索引
 

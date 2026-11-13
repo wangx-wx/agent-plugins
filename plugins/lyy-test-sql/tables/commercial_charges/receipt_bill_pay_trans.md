@@ -32,6 +32,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查询账单支付交易表
+
+```sql
+select * from receipt_bill_pay_trans where merchant_id ='1032498' order by created desc
+```
+
 ## 索引
 
 - PK: id

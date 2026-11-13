@@ -63,6 +63,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查订单信息
+
+```sql
+SELECT * FROM order_info where distributor_id='1913197'and user_id ='194947573' and create_time > '2025-11-04 00:00:00'  order by create_time desc;
+```
+
 ## 索引
 
 - PK: (id, create_time)

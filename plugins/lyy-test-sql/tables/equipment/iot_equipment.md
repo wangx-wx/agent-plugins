@@ -53,6 +53,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查设备信息
+
+```sql
+SELECT id, unique_code, iccid, imei, login_flag, factory, mainboard_factory, mainboard_model, factory_model, hardware_model, hardware_project, interface_type, bluetooth_mac, mac, firmware_version, business_version_no, initial_time, factory_type, device_type, status, hardware_flag, gateway, category, firmware_business_no, firmware_underlay_no, private_key, pkey_password, bluetooth_key FROM lyy.iot_equipment WHERE unique_code=？;
+```
+
 ## 索引
 
 - PK: id

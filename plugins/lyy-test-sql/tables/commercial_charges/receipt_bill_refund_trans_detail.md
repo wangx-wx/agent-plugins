@@ -35,6 +35,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 账单退款明细表
+
+```sql
+select * from receipt_bill_refund_trans_detail where merchant_id ='1033278'order by created desc
+```
+
 ## 索引
 
 - PK: id

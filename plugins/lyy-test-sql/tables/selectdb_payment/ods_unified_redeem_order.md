@@ -3,10 +3,9 @@ table: ods_unified_redeem_order
 database: selectdb_payment
 domain: 中台
 dbDictId: 281279114926002178
-description: 核销订单聚合，聚合三方，美团，抖音核销的数据
+description: 团购核销订单聚合，聚合三方，美团，抖音核销的数据
 use_cases:
-  - 经营统计查抖音核销数据
-  - 经营统计查美团核销数据
+  - 经营统计查抖音核销数据、经营统计查美团核销数据
 ---
 
 # ods_unified_redeem_order
@@ -45,6 +44,20 @@ use_cases:
 ## 查询规则
 
 - 待补充
+
+## 参考 SQL
+
+### 经营统计查抖音核销数据
+
+```sql
+select * from ods_unified_redeem_order where distributor_id ='1073579' and `day` ='2026-07-16'
+```
+
+### 经营统计查美团核销数据
+
+```sql
+select * from ods_unified_redeem_order where distributor_id ='1073579' and `day` ='2026-07-17'
+```
 
 ## 索引
 

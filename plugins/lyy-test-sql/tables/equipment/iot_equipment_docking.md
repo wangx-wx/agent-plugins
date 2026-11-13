@@ -50,6 +50,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查安卓设备信息
+
+```sql
+SELECT id, equipment_id, equipment_value, app_id, app_secret, app_uuid, switch_type, face_equipment_type, serial_unique_code, app_type, android_unique_code, third_factory,  connect_type, connect_mode, protocol_version, mainboard_id FROM lyy.iot_equipment_docking WHERE equipment_value=？;
+```
+
 ## 索引
 
 - PK: id

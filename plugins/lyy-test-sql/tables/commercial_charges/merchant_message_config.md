@@ -23,6 +23,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 经营快报
+
+```sql
+select * from merchant_message_config where merchant_id ='1036030'
+```
+
 ## 索引
 
 - PK: id

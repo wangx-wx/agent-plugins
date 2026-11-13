@@ -127,6 +127,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查询订单信息
+
+```sql
+select * from ads_order_info_agg where  out_trade_no ='PA101525082813502922000055181532' and ds='2025-08-28'
+```
+
 ## 索引
 
 - PK: (out_trade_no, distributor_id, ds)

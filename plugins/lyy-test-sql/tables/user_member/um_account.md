@@ -39,6 +39,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 总权益
+
+```sql
+select * from um_account where user_id='2200007861' and merchant_id=1035814 order by update_time desc ;
+```
+
 ## 索引
 
 - 无（DDL 中未定义索引）

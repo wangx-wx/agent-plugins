@@ -5,13 +5,7 @@ domain: 中台
 dbDictId: 281279114926002178
 description: 经营统计汇总表
 use_cases:
-  - 经营统计每日的收入概览
-  - 启动概览
-  - 储值概览
-  - 每日经营趋势
-  - 收款金额趋势
-  - 时段经营趋势
-  - 收款分析
+  - 经营统计每日的收入概览、启动概览、储值概览、每日经营趋势、收款金额趋势、时段经营趋势、收款分析
 ---
 
 # ads_payment_equipment_record_di
@@ -189,6 +183,14 @@ use_cases:
 ## 查询规则
 
 - 待补充
+
+## 参考 SQL
+
+### 经营统计每日的收入概览、启动概览、储值概览、每日经营趋势、收款金额趋势、时段经营趋势、收款分析
+
+```sql
+select * from ads_payment_equipment_record_di aperd where ds='2026-07-24' and distributor_id ='1399163' and `type` ='商家维度'
+```
 
 ## 索引
 

@@ -32,6 +32,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 收费配置
+
+```sql
+select * from  system_charge_config where lyy_equipment_type_id in(1000078)
+```
+
 ## 索引
 
 - PK: system_charge_config_id

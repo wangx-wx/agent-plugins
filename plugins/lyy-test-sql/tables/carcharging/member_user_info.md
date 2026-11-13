@@ -38,6 +38,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 用户表
+
+```sql
+select * from  member_user_info where member_id=2200005679
+```
+
 ## 索引
 
 - PK: id

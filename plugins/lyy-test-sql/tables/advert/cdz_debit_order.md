@@ -55,6 +55,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 星会员签约表
+
+```sql
+select * from cdz_debit_order where user_id =2200020065 and order_no ='RELAXED22000200651781073784685'
+```
+
 ## 索引
 
 - PK: id

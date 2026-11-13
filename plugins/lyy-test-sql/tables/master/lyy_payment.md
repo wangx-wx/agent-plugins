@@ -68,6 +68,17 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查提现情况
+
+```sql
+select *
+from lyy_payment
+where ad_org_id in (1036475)
+order by created desc;
+```
+
 ## 索引
 
 - PK: lyy_payment_id

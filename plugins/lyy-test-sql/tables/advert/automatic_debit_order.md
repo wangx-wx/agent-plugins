@@ -5,8 +5,7 @@ domain: 充电桩、按摩
 dbDictId: 10082
 description: 自动扣款订单表
 use_cases:
-  - V会员签约表
-  - 代扣订单
+  - V会员签约表、代扣订单
 ---
 
 # automatic_debit_order
@@ -55,6 +54,20 @@ use_cases:
 ## 查询规则
 
 - 待补充
+
+## 参考 SQL
+
+### V会员签约表
+
+```sql
+select * from automatic_debit_order where user_id =2200020065 and order_no ='ALCDZ220000123020240808115504387'
+```
+
+### 代扣订单
+
+```sql
+select * from automatic_debit_order where created >= '2026-3-3'  and user_id = 2200012720 ;
+```
 
 ## 索引
 

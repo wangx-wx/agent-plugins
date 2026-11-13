@@ -5,8 +5,7 @@ domain: 中台
 dbDictId: 10089
 description: 收款账单表
 use_cases:
-  - saas
-  - ai经营分析收款账单
+  - saas、ai经营分析收款账单
 ---
 
 # receipt_bill
@@ -43,6 +42,14 @@ use_cases:
 ## 查询规则
 
 - 待补充
+
+## 参考 SQL
+
+### saas、ai经营分析收款账单
+
+```sql
+select * from receipt_bill where merchant_id ='1095114' and product_code='SAAS' order by created desc
+```
 
 ## 索引
 

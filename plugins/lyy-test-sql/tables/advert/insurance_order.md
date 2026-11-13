@@ -50,6 +50,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 权益订单表
+
+```sql
+select * from insurance_order   where lyy_user_id in(2200020344) and created >= '2026-10-10' and distributor_id ='1032498';
+```
+
 ## 索引
 
 - 无（DDL 中未定义索引）

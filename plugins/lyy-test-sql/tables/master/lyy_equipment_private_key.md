@@ -30,6 +30,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查设备密钥
+
+```sql
+SELECT lyy_equipment_private_key_id, unique_code, private_key, password FROM adempiere.lyy_equipment_private_key WHERE unique_code=？;
+```
+
 ## 索引
 
 - PK: lyy_equipment_private_key_id

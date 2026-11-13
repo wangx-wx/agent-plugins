@@ -40,6 +40,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查工单
+
+```sql
+select * from ticket
+```
+
 ## 索引
 
 - PK: id

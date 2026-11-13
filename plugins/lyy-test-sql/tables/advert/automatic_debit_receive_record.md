@@ -33,6 +33,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 代扣记录
+
+```sql
+select * from automatic_debit_receive_record   where user_id in(2200020344) and created >= '2026-10-10' and distributor_id ='1032498';
+```
+
 ## 索引
 
 - PK: id

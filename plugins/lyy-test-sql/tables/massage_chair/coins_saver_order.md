@@ -35,6 +35,26 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查询机器存币记录
+
+```sql
+SELECT * FROM (select
+coins as "币数",
+user_id as "用户id",
+equipment_value as "设备编码",
+created as "创建时间",
+updated as "上报时间",
+case when device_status =0 then '取消存币' 
+when device_status =1 then '启动成功'
+when device_status =2 then '同步结束状态'
+when device_status =3 then '正常结束' end as "设备状态"
+from coins_saver_order 
+where merchant_id = 1878870
+order by created desc) as t LIMIT 10000
+```
+
 ## 索引
 
 - PK: id

@@ -5,8 +5,7 @@ domain: 洗水
 dbDictId: 10376
 description: 小乐用户关联平台用户记录表
 use_cases:
-  - 查app用户与lyy
-  - ls系统用户关联关系
+  - 查app用户与lyy、ls系统用户关联关系
 ---
 
 # xiaole_life_user_relate
@@ -38,6 +37,14 @@ use_cases:
 ## 查询规则
 
 - 待补充
+
+## 参考 SQL
+
+### 查app用户与lyy、ls系统用户关联关系
+
+```sql
+select* from xiaole_life_user_relate xlur  where platform_user_id ='2200009261' and subject_platform ='leyaoyao'order by create_time  desc
+```
 
 ## 索引
 

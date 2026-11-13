@@ -34,6 +34,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查询抖音商户门店
+
+```sql
+select * from tiktok_activity_poi where poi_id='7284593202361796669'
+```
+
 ## 索引
 
 - PK: tiktok_activity_poi_id

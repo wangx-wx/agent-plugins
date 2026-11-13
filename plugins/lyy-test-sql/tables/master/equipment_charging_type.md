@@ -25,6 +25,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 场地配置信息
+
+```sql
+select * from equipment_charging_type where lyy_equipment_group_id =1120128
+```
+
 ## 索引
 
 - PK: equipment_charging_type_id

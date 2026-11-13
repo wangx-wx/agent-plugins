@@ -35,6 +35,14 @@ use_cases:
 
 - 待补充
 
+## 参考 SQL
+
+### 查询抖音订单
+
+```sql
+select * from tiktok_activity_order where sku_id='7284593202361796669'
+```
+
 ## 索引
 
 - 无（DDL 中未定义索引）
