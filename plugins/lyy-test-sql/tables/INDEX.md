@@ -53,17 +53,12 @@ merchant_id % 128
 | `merchant` | 1 | [merchant_equipment_board](./merchant/merchant_equipment_board.sql) |
 | `middle_stage` | 1 | [ticket](./middle_stage/ticket.sql) |
 | `order` | 2 | [order_info](./order/order_info.sql)、[refund_order_info](./order/refund_order_info.sql) |
-| `selectdb_payment` | 6 | [ads_order_info_agg](./selectdb_payment/ads_order_info_agg.sql)、[ads_payment_equipment_record_di](./selectdb_payment/ads_payment_equipment_record_di.sql)、[ds_unified_redeem_order](./selectdb_payment/ds_unified_redeem_order.sql)、[dwd_payment_payment_record_trade](./selectdb_payment/dwd_payment_payment_record_trade.sql)、[dwd_payment_refund_record_trade](./selectdb_payment/dwd_payment_refund_record_trade.sql)、[ods_unified_redeem_order](./selectdb_payment/ods_unified_redeem_order.sql) |
+| `selectdb_payment` | 5 | [ads_order_info_agg](./selectdb_payment/ads_order_info_agg.sql)、[ads_payment_equipment_record_di](./selectdb_payment/ads_payment_equipment_record_di.sql)、[dwd_payment_payment_record_trade](./selectdb_payment/dwd_payment_payment_record_trade.sql)、[dwd_payment_refund_record_trade](./selectdb_payment/dwd_payment_refund_record_trade.sql)、[ods_unified_redeem_order](./selectdb_payment/ods_unified_redeem_order.sql) |
 | `small_venue` | 1 | [t_merchant_card](./small_venue/t_merchant_card.sql) |
 | `user_member` | 5 | [um_account](./user_member/um_account.sql)、[um_account_benefit](./user_member/um_account_benefit.sql)、[um_account_record](./user_member/um_account_record.sql)、[um_benefit](./user_member/um_benefit.sql)、[um_benefit_scope](./user_member/um_benefit_scope.sql) |
 
-合计：**85** 张表、**15** 个库。
+合计：**84** 张表、**15** 个库。
 
 ## 未收集到建表语句
 
-- `selectdb_payment/ads_order_info_agg.sql`
-- `selectdb_payment/ads_payment_equipment_record_di.sql`
-- `selectdb_payment/ds_unified_redeem_order.sql`
-- `selectdb_payment/dwd_payment_payment_record_trade.sql`
-- `selectdb_payment/dwd_payment_refund_record_trade.sql`
-- `selectdb_payment/ods_unified_redeem_order.sql`
+（无）
