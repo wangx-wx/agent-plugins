@@ -1,0 +1,44 @@
+# Hermes 插件市场条目（候选）
+#
+# 用途：提交到 NousResearch/hermes-agent 的 plugin-catalog/ 目录，
+#       审核通过后任何人都可 `hermes plugins install grill-xx`。
+#
+# 提交方式：向 NousResearch/hermes-agent 提 PR，新增 plugin-catalog/grill-xx.yaml，
+#           内容即下方条目（去掉本段注释）。
+#
+# 注意：
+# - sha 必须指向含有 plugins/grill-xx/plugin.json 的 commit，
+#   否则 CI 克隆该 commit 后跑 `hermes plugins validate` 会判为非插件目录。
+# - 本条目里的 sha 是本地提交，尚未推送；推送后若 commit 未变则可直接使用。
+# - category 只能是 desktop|memory|platform|web|tools|voice|automation|models|general，
+#   纯技能包在现有 catalog 中统一归入 tools。
+
+name: grill-xx
+title: Grill Me
+repo: https://github.com/wangx-wx/agent-plugins
+sha: 2af660542a5dabe070580a16c1f115a2024b8bc7
+subdir: plugins/grill-xx
+version: "1.0.0"
+description: >-
+  通过结构化多轮追问帮你把想法、计划或决策问到底，直到没有隐含假设：
+  按设计树分轮次提问，每个问题附带推荐答案，事实由 agent 自行查证而非反问用户。
+  同一插件另附 TDD（红-绿-重构）、教学、问卷生成与规格生成四个技能。
+  纯提示词包，不注册工具、钩子或中间件，不发起网络请求，不执行 shell 命令，不存储凭据；
+  会读取当前项目中的文件与文档以生成问题。
+maintainer: wangx
+tier: community
+category: tools
+requires_hermes: ">=0.21.6"
+docs_url: https://github.com/wangx-wx/agent-plugins/tree/main/plugins/grill-xx
+readme: true
+platforms: []
+onboarding: false
+known_issues:
+  - "纯技能包：不含插件工具，因此 Hermes 侧没有工具授权环节。"
+  - "技能 frontmatter 中的 disable-model-invocation 被 Hermes 忽略，grilling/teach/to-questionnaire/to-spec 在 Hermes 中可被模型自动选用（在 Claude Code 与 Pi 中仅支持手动触发）。"
+  - "追问轮次取决于模型能力，可能产生较多轮对话。"
+capabilities:
+  provides_tools: []
+  provides_hooks: []
+  provides_middleware: []
+  requires_env: []
