@@ -1,0 +1,14 @@
+{
+  "name": "agent-plugins",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Claude Code / Codex / Pi / Hermes 多宿主插件集合",
+  "keywords": [
+    "pi-package"
+  ],
+  "pi": {
+    "skills": [
+      "./plugins/grill-xx/skills/**/SKILL.md"
+    ]
+  }
+}

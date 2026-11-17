@@ -1,0 +1,16 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "grill-xx",
+  "version": "1.0.0",
+  "description": "通过结构化多轮追问帮助用户澄清需求、补全关键信息，附带 TDD、教学、问卷与规格生成技能。纯技能包，不注册工具与钩子，不发起网络请求，不执行 shell 命令。",
+  "author": {
+    "name": "wangx"
+  },
+  "repository": "https://github.com/wangx-wx/agent-plugins",
+  "license": "MIT",
+  "keywords": [
+    "grill",
+    "requirements",
+    "tdd"
+  ]
+}
